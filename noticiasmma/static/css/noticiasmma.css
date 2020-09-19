@@ -1,0 +1,46 @@
+* {
+font-family: sans-serif;
+}
+
+a {
+text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-weight: bold;
+}
+
+.card {
+border: 0;
+}
+
+.card-img {
+border-radius: 0;
+}
+
+.carousel-indicators {
+position: static;
+background-color: #ffa900;
+}
+
+.carousel-p {
+color: #cecece;
+}
+
+.carousel-indicators {
+border-bottom: 2px solid #ffa900;
+}
+
+.carousel-indicators li {
+background-color: #ffa900;
+}
+
+.text-gold {
+color: #ffa900;
+}
+
+@media (max-width: 767.98px) {
+    .col-7.col-md-12 {
+        padding-left: 0;
+        }
+}
