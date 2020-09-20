@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -130,6 +131,10 @@ class BaseArticlePage(Page):
     @property
     def page_id(self):
         return self.page_ptr_id
+
+    @property
+    def publish_date(self):
+        return self.first_published_at.strftime("%m/%d/%Y, %H:%M:%S")
 
     @property
     def get_tags(self):
