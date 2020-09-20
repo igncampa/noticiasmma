@@ -2,7 +2,7 @@
 {% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
-  <div class="container-fluid bg-dark px-0 pb-2">
+  <div class="container-fluid bg-dark px-0 pb-3">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -48,13 +48,17 @@
     var CURR_DATE = Date.parse("{{ page.current_date }}");
     var DIFF = Math.round(Math.abs(CURR_DATE - POST_DATE) / 3600000);
 
-    if (DIFF < 24) {
-      var DISPLAY = " - Hace ${DIFF} horas";
+    if (DIFF < 1) {
+      var DISPLAY = ` - Hace 1 hora`;
+    } else if (DIFF  > 1 && DIFF < 24) {
+      var DISPLAY = ` - Hace ${DIFF} horas`;
     } else if (DIFF > 24 && DIFF < 48) {
-      var DISPLAY = " - Ayer";
-    } else {
+      var DISPLAY = ' - Ayer';
+    } else if (DIFF > 48 && DIFF < 336) {
       var DAYS = Math.round(DIFF/24);
-      var DISPLAY = ` - Hace ${DAYS} dias`;
+      var DISPLAY = ` - Hace ${DAYS} días`;
+    } else {
+      var DISPLAY = POST_DATE
     };
 
     document.getElementById("test").innerText = DISPLAY;
