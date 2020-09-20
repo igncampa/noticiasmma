@@ -137,6 +137,10 @@ class BaseArticlePage(Page):
         return self.first_published_at.strftime("%m/%d/%Y, %H:%M:%S")
 
     @property
+    def current_date(self):
+        return self.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+
+    @property
     def get_tags(self):
         tags = self.tags.all()
         return tags

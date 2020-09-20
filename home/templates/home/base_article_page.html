@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <span class="badge bg-dark text-light border border-secondary rounded-0 mb-2">{{ page.get_parent.title }}</span><span class="text-light"> - {{ page.publish_date }}</span>
+          <span class="badge bg-dark text-light border border-secondary rounded-0 mb-2">{{ page.get_parent.title }}</span><span id="test" class="small text-light"></span>
           <h1 class="text-white font-weight-bold mb-3">{{ page.title }}</h1>
         </div>
         <div class="col-12 col-lg-7">
@@ -44,9 +44,22 @@
 
 {% block extra_js %}
   <script>
-    var POST_DATE = "{{ page.first_published_at }}"
+    var POST_DATE = "{{ page.publish_date }}"
+    var CURR_DATE = "{{ page.current_date }}"
+    var DIFF = Math.round(Math.abs(CURR_DATE - POST_DATE) / 3600000);
 
+    if (DIFF < 24) {
+      var DISPLAY = " - Hace ${DIFF} horas";
+    } else if (DIFF > 24 && DIFF < 48) {
+      var DISPLAY = " - Ayer";
+    } else {
+      var DAYS = Math.round(DIFF/24);
+      var DISPLAY = " - Hace ${DAYS} dias";
+    };
+
+    document.getElementById("test").innerText = DISPLAY;
   </script>
+
   <script>
     var PAGE_URL = "{{ page.full_url }}";
     var PAGE_IDENTIFIER = "{{ page.page_id }}";
