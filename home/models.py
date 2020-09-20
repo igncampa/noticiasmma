@@ -138,7 +138,7 @@ class BaseArticlePage(Page):
 
     @property
     def current_date(self):
-        return self.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+        return datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
 
     @property
     def get_tags(self):
