@@ -30,7 +30,7 @@ class HomePage(Page):
 
     # Parent page / subpage type rules
 
-    subpage_types = ['CategoryPage']
+    subpage_types = ['CategoryPage', 'HomePageTag']
 
     @property
     def get_tags(self):

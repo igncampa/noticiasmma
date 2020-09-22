@@ -24,15 +24,26 @@
   <div class="container py-4">
     <div class="row justify-content-left">
       <div class="col-12 col-lg-7">
-      {% for block in self.body %}
-        {% if block.block_type == 'embed_block' %}
-        <div class="embed-responsive embed-responsive-16by9">
-          {{ block }}
-        </div>
-        {% else %}
-          {{ block }}
+        {% for block in self.body %}
+          {% if block.block_type == 'embed_block' %}
+          <div class="embed-responsive embed-responsive-16by9">
+            {{ block }}
+          </div>
+          {% else %}
+            {{ block }}
+          {% endif %}
+        {% endfor %}
+        {% if page.get_tags %}
+          <ul class="list-inline">
+            {% for tag in page.get_tags %}
+            <li class="list-inline-item border-0">
+              <button class="btn btn-sm btn-light my-2 rounded-0">
+                {{ tag }}
+              </button>
+            </li>
+            {% endfor %}
+          </ul>
         {% endif %}
-      {% endfor %}
       </div>
       <div class="col-12 py-4">
         <div id="disqus_thread"></div>
@@ -58,7 +69,7 @@
       var DAYS = Math.round(DIFF/24);
       var DISPLAY = ` - Hace ${DAYS} días`;
     } else {
-      var DISPLAY = POST_DATE
+      var DISPLAY = POST_DATE;
     };
 
     document.getElementById("test").innerText = DISPLAY;
