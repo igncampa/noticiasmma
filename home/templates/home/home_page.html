@@ -55,4 +55,33 @@
     </a>
   </section>
 
+  <section class="bg-white">
+    <div class="container py-5">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+        {% for article in feed %}
+        {% image article.feed_image fill-350x197 as tmp_photo %}
+        <div class="col mb-4">
+          <div class="card h-100">
+            <div class="row row-cols-2 row-cols-md-1">
+              <div class="col-5 col-md-12">
+                <a href="{% pageurl article %}">
+                  <img class="card-img mb-2" src="{{ tmp_photo.url }}">
+                </a>
+              </div>
+              <div class="col-7 col-md-12">
+                <div class="card-body p-0">
+                  <a href="{% pageurl article %}">
+                    <h5 class="card-title text-dark mb-0">{{ article.title }}</h5>
+                  </a>
+                  <p class="card-text"><small class="text-muted">{{ article.first_published_at }}</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
 {% endblock %}
